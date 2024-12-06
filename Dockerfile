@@ -1,6 +1,4 @@
-FROM maven:3.9.4-openjdk-17 AS build
-FROM openjdk:17-slim
-
+FROM maven:latest AS build
 
 WORKDIR /app
 
@@ -12,7 +10,7 @@ COPY src ./src
 
 RUN mvn clean package -DskipTests
 
-FROM openjdk:17-jdk-slim
+FROM amazoncorretto:17
 
 WORKDIR /app
 
